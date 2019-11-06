@@ -189,27 +189,49 @@ describe("ArrayList", function () {
             "miniscule"];
 
         it("find an element", function () {
-
             const sorted = array.sort();
-
             assert.equal(sorted[0], "big");
-
             let i = arrayList.contain("number”", array);
             assert.equal(i, -1);
-
             let j = arrayList.contain("tiny", array);
             assert.equal(j, 12);
+            
 
         });
     });
 
 
+    describe("namecomparator() method", function () {
+        class Employee {
+            /**
+             * 
+             * @param {String} name name of employee
+             * @param {Number} salary monthly salary
+             * @param {Number} year hired on year
+             * @param {Number} month hired on month
+             * @param {Number} day hired on day
+             */
+            constructor(name, salary, year, month, day) {
+                this.name = name;
+                this.salary = salary;
+                this.hireDate = new Date(year, month - 1, day);
+            }
+        }
+        let employees = [
+            new Employee("George", 40000, 1996, 11, 5),
+            new Employee("Dave", 50000, 2000, 1, 3),
+            new Employee("Richard", 45000, 2001, 2, 7)
+        ];
+        employees.sort(arrayList.nameComparator);
 
+        it("Compares Employees by name", function() {
+           assert.equal(employees[0].name, "Dave"); 
+        });
+
+    });
+     
+    });
     
-   
-
-});
-
 
 
 describe("Noraml Array", function () {

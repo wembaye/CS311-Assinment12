@@ -88,6 +88,37 @@ describe("LinkedList", function () {
 
     });
 
+
+    describe("namecomparator() method", function () {
+        class Employee {
+            /**
+             * 
+             * @param {String} name name of employee
+             * @param {Number} salary monthly salary
+             * @param {Number} year hired on year
+             * @param {Number} month hired on month
+             * @param {Number} day hired on day
+             */
+            constructor(name, salary, year, month, day) {
+                this.name = name;
+                this.salary = salary;
+                this.hireDate = new Date(year, month - 1, day);
+            }
+        }
+        let employees = [
+            new Employee("George", 40000, 1996, 11, 5),
+            new Employee("Dave", 50000, 2000, 1, 3),
+            new Employee("Richard", 45000, 2001, 2, 7)
+        ];
+        employees.sort(linkedList.nameComparator);
+
+        it("Compares Employees by name", function() {
+           assert.equal(employees[0].name, "Dave"); 
+        });
+
+    });
+
+
    describe("insert() method", function () {
         it("can insert at the start of a list", function () {
             linkedList.insert(0, 5);
